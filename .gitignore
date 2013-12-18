@@ -1,0 +1,16 @@
+# vim
+*.swp
+
+# Mac Finder files
+*.DS_Store
+
+# Logs
+log/*
+
+tmp
+
+# Vagrant
+.vagrant
+
+# Node / NPM
+node_modules
