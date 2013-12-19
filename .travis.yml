@@ -1,2 +1,7 @@
+---
+language: ruby
+notifications:
+  email: ubergeek3141@gmail.com
+script: rake test
 rvm:
   - "1.9.3"
