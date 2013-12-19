@@ -33,6 +33,9 @@ coverage.data
 ## RUBINIUS
 *.rbc
 
+## Hoe?
+.source_index
+
 # Mac Finder files
 *.DS_Store
 
