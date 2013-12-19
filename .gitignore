@@ -1,16 +1,40 @@
-# vim
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
 *.swp
+
+## PROJECT::GENERAL
+.yardoc
+coverage
+doc
+log
+pkg
+rdoc
+
+## BUNDLER
+*.gem
+.bundle
+pkg
+
+## RBENV
+.ruby-version
+.rbenv*
+
+## RCOV
+coverage.data
+
+## RUBINIUS
+*.rbc
 
 # Mac Finder files
 *.DS_Store
-
-# Logs
-log/*
-
-tmp
-
-# Vagrant
-.vagrant
 
 # Node / NPM
 node_modules
