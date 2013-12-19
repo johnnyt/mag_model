@@ -20,14 +20,13 @@ Hoe.spec 'mag_model' do
 
   self.history_file = 'CHANGELOG.md'
   self.readme_file  = 'README.md'
-  self.testlib      = :minitest
+  self.testlib      = :none # actually minitest. this helps the gem to be loaded
 
   license 'MIT'
 
-  dependency 'active_attr',    '>= 0.8.2'
-  dependency 'activesupport',  '= 3.2.15' # MagLev optimized version
+  dependency 'active_attr',   '>= 0.8.2'
+  dependency 'activesupport', '= 3.2.15' # MagLev optimized version
+  dependency 'minitest',      '= 5.0.2', :dev
 end
-
-Dir['tasks/**/*.rake'].each { |t| load t }
 
 # vim: syntax=ruby
