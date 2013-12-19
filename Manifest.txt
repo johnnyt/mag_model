@@ -1,0 +1,15 @@
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE.md
+Manifest.txt
+README.md
+Rakefile
+lib/mag_model.rb
+lib/mag_model/base.rb
+lib/mag_model/version.rb
+mag_model.gemspec
+test/helper.rb
+test/mag_model/test_active_model_lint.rb
+test/mag_model/test_base.rb
+test/mag_model/test_persistence.rb
+test/test_version.rb
