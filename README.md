@@ -31,7 +31,7 @@ installed (`gem install hoe` if not), then run `rake newb` from the
 require 'mag_model'
 
 class Account
-  include MagModel
+  include MagModel::Base
   attribute :balance
   validates_presence_of :balance
 end
