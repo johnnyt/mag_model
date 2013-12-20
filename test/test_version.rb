@@ -2,6 +2,6 @@ require 'helper'
 
 class TestVersion < Minitest::Test
   def test_version
-    assert MagModel::VERSION
+    assert MemModel::VERSION
   end
 end

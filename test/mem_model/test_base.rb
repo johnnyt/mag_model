@@ -2,7 +2,7 @@ require File.expand_path('../../helper', __FILE__)
 
 class TestBase < Minitest::Test
   class Account
-    include MagModel::Base
+    include MemModel::Base
   end
 
   def test_new_guid_uniqueness

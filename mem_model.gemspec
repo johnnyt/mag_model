@@ -1,25 +1,25 @@
 # -*- encoding: utf-8 -*-
-# stub: mag_model 0.1.0.20131219143022 ruby lib
+# stub: mem_model 0.1.0.20131220134709 ruby lib
 
 Gem::Specification.new do |s|
-  s.name = "mag_model"
-  s.version = "0.1.0.20131219143022"
+  s.name = "mem_model"
+  s.version = "0.1.0.20131220134709"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["JohnnyT"]
-  s.date = "2013-12-19"
-  s.description = "MagModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MagModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
+  s.date = "2013-12-20"
+  s.description = "MemModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MemModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
   s.email = ["ubergeek3141@gmail.com"]
   s.extra_rdoc_files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md"]
-  s.files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md", "Rakefile", "lib/mag_model.rb", "lib/mag_model/base.rb", "lib/mag_model/version.rb", "mag_model.gemspec", "test/helper.rb", "test/mag_model/test_active_model_lint.rb", "test/mag_model/test_base.rb", "test/mag_model/test_persistence.rb", "test/test_version.rb", ".gemtest"]
-  s.homepage = "https://github.com/johnnyt/mag_model"
+  s.files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md", "Rakefile", "lib/mem_model.rb", "lib/mem_model/base.rb", "lib/mem_model/version.rb", "mem_model.gemspec", "test/helper.rb", "test/mem_model/test_active_model_lint.rb", "test/mem_model/test_base.rb", "test/mem_model/test_persistence.rb", "test/test_version.rb", ".gemtest"]
+  s.homepage = "https://github.com/johnnyt/mem_model"
   s.licenses = ["MIT"]
   s.rdoc_options = ["--main", "README.md"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = "mag_model"
+  s.rubyforge_project = "mem_model"
   s.rubygems_version = "2.1.11"
   s.summary = "ActiveModel-compliant MagLev persistence"
-  s.test_files = ["test/mag_model/test_active_model_lint.rb", "test/mag_model/test_base.rb", "test/mag_model/test_persistence.rb", "test/test_version.rb"]
+  s.test_files = ["test/mem_model/test_active_model_lint.rb", "test/mem_model/test_base.rb", "test/mem_model/test_persistence.rb", "test/test_version.rb"]
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

@@ -3,8 +3,8 @@ require 'securerandom'
 require 'forwardable'
 require 'set'
 
-module MagModel
+module MemModel
 end
 
-require 'mag_model/base'
-require 'mag_model/version'
+require 'mem_model/base'
+require 'mem_model/version'

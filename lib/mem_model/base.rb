@@ -1,4 +1,4 @@
-module MagModel
+module MemModel
   class UnknownRecord < ArgumentError; end
   class InvalidRecord < StandardError; end
 

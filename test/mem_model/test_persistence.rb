@@ -2,7 +2,7 @@ require File.expand_path('../../helper', __FILE__)
 
 class TestPersistence < Minitest::Test
   class Account
-    include MagModel::Base
+    include MemModel::Base
     attribute :balance
   end
 
@@ -25,7 +25,7 @@ class TestPersistence < Minitest::Test
   end
 
   def test_find_nonexistent_record
-    assert_raises(MagModel::UnknownRecord) do
+    assert_raises(MemModel::UnknownRecord) do
       Account.find 'wat'
     end
   end

@@ -4,7 +4,7 @@ class TestActiveModelLint < Minitest::Test
   include ActiveModel::Lint::Tests
 
   class CompliantModel
-    include MagModel::Base
+    include MemModel::Base
   end
 
   def setup

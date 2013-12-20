@@ -1,37 +1,37 @@
-# MagModel
+# MemModel
 
-MagModel persists Ruby objects using MagLev as a data storage engine. It is an
+MemModel persists Ruby objects using MagLev as a data storage engine. It is an
 ActiveModel compliant implementation so it works stand-alone or in Rails 3 as a
 drop-in replacement for ActiveRecord or DataMapper.
 
-If MagModel is used in non-MagLev platforms, objects will be persisted to
+If MemModel is used in non-MagLev platforms, objects will be persisted to
 in-memory sets.
 
 
 ### Installation
 
-Run `gem install mag_model` to install the gem on its own.
+Run `gem install mem_model` to install the gem on its own.
 
 Or you can add the following to your Gemfile and run the `bundle` command to
 install it.
 
-    gem 'mag_model'
+    gem 'mem_model'
 
 
 ##### Development
 
 If you'd like to work on this project first make sure you have the `hoe` gem
 installed (`gem install hoe` if not), then run `rake newb` from the
-`mag_model` project directory.
+`mem_model` project directory.
 
 
 ### Example
 
 ```ruby
-require 'mag_model'
+require 'mem_model'
 
 class Account
-  include MagModel::Base
+  include MemModel::Base
   attribute :balance
   validates_presence_of :balance
 end
@@ -50,7 +50,7 @@ Account.first           #=> #<Account balance: 100, id: "ACC-123...">
 
 ### Similar stuff
 
-This stuff has been very helpful in working on MagModel.
+This stuff has been very helpful in working on MemModel.
 
 ##### Projects
 
@@ -80,7 +80,7 @@ This stuff has been very helpful in working on MagModel.
 
 ### Contributing
 
-If you'd like to contribute to MagModel, that's awesome. There's a guide to contributing
+If you'd like to contribute to MemModel, that's awesome. There's a guide to contributing
 (both code and general help) over in [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ### Development
