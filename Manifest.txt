@@ -1,5 +1,7 @@
+.travis.yml
 CHANGELOG.md
 CONTRIBUTING.md
+Gemfile.ci
 LICENSE.md
 Manifest.txt
 README.md
