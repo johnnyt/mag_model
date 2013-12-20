@@ -26,7 +26,10 @@ Hoe.spec 'mem_model' do
 
   dependency 'active_attr',   '>= 0.8.2'
   dependency 'activesupport', '= 3.2.15' # MagLev optimized version
-  dependency 'minitest',      '= 5.0.2', :dev
+
+  dependency 'minitest',                  '= 5.0.2',  :dev
+  dependency 'minitest-reporters',        '>= 1.0.0', :dev
+  dependency 'codeclimate-test-reporter', '>= 1.0.0', :dev
 end
 
 # vim: syntax=ruby

@@ -1,5 +1,8 @@
 ---
 language: ruby
-gemfile: Gemfile.ci
 rvm:
   - 1.9.3
+
+gemfile: Gemfile.ci
+env:
+  - CODECLIMATE_REPO_TOKEN=3d1783de3c19d80cc2dd1c8dc1a2513f5f69550b8e5258b4969bd36999928006

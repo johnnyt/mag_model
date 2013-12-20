@@ -6,3 +6,5 @@ gem 'active_attr',   '>= 0.8.2'
 gem 'activesupport', '= 3.2.15' # MagLev optimized version
 gem 'minitest'
 gem 'minitest-reporters'
+
+gem 'codeclimate-test-reporter', :require => nil

@@ -1,4 +1,7 @@
 require 'rubygems'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require File.expand_path('lib/mem_model')
 require 'active_model/lint'
 gem 'minitest', '5.2.0'
