@@ -40,15 +40,15 @@ class Account
   validates_presence_of :balance
 end
 
-checking = Account.new  #=> #<Account balance: nil, id: "ACC-123...">
+checking = Account.new  #=> #<Account balance: nil, id: 17338520>
 checking.valid?         #=> false
 checking.balance = 100  #=> 100
 checking.valid?         #=> true
 
-checking.save           #=> "ACC-123..."
+checking.save           #=> 17338520
 checking.new?           #=> false
 Account.size            #=> 1
-Account.first           #=> #<Account balance: 100, id: "ACC-123...">
+Account.first           #=> #<Account balance: 100, id: 17338520>
 ```
 
 

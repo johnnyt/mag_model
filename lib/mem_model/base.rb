@@ -22,34 +22,18 @@ module MemModel
       end
 
       def generate_id
-        [guid_prefix, '-', SecureRandom.uuid].join.upcase
+        object_id
       end
 
-      def guid_prefix
-        self.name[0...3]
-      end
-
-      def store
-        @store ||= Set.new
-      end
-
-      def find_by_id(id)
-        store.detect{ |r| id == r.id } || raise(UnknownRecord, "Couldn't find #{self.name} with ID=#{id}")
-      end
-
-      def find_all_by_id(substring)
-        records = store.select{ |r| r.id.include?(substring.to_s.upcase) }
-        records && records.size == 1 ?
-          records.first :
-          records || raise(UnknownRecord, "Couldn't find #{self.name} with ID=#{id}")
-      end
-
-      def [](substring)
-        store.detect{ |r| r.id.include?(substring.to_s.upcase) } || raise(UnknownRecord, "Couldn't find #{self.name} with ID=~#{substring}")
-      end
-
+      # Find or nil
       def find(id)
-        store.detect{ |r| r.id == id } || raise(UnknownRecord, "Couldn't find #{self.name} with ID=#{id}")
+        store.detect{ |r| r.id == id }
+      end
+      alias_method :[], :find
+
+      # Find or raise
+      def find_by_id(id)
+        find(id) || raise(UnknownRecord, "Couldn't find #{self.name} with ID=#{id}")
       end
 
       def exists?(id)
@@ -92,18 +76,7 @@ module MemModel
     def initialize(attributes = {})
       @persisted = false
       self.id = self.class.generate_id
-      load(attributes)
-    end
-
-    def load(attributes) #:nodoc:
-      return unless attributes
-      attributes.each do |(name, value)|
-        self.send("#{name}=".to_sym, value)
-      end
-    end
-
-    def to_model
-      return self
+      load_attributes(attributes)
     end
 
     def new?
@@ -123,22 +96,39 @@ module MemModel
       save || raise(InvalidRecord)
     end
 
+    def create
+      self.id ||= generate_id
+      self.class.store << self
+      @persisted = true
+      self.id
+    end
+
+    def update
+      # no-op
+      true
+    end
+
+    def update_attributes(attributes)
+      load_attributes(attributes)
+      save
+    end
+
     def destroy
       self.class.records.delete(self.id)
       self
     end
 
-    def create
-      self.id ||= generate_id
-      @persisted = true
-      self.class.store << self
-      self.id
+    def to_model
+      return self
     end
 
-    def update
-      item = self.class.raw_find(id)
-      item.load(attributes)
-      true
+    private
+
+    def load_attributes(attributes)
+      return unless attributes
+      attributes.each do |(name, value)|
+        self.send("#{name}=".to_sym, value)
+      end
     end
   end
 end
