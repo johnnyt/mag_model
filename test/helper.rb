@@ -1,5 +1,9 @@
 require 'rubygems'
 
+# Disable warning message
+require 'i18n'
+I18n.enforce_available_locales = false
+
 require 'coveralls'
 Coveralls.wear!
 
