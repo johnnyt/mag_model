@@ -1,3 +1,6 @@
+## CI Artifacts
+Gemfile.ci.lock
+
 ## TEXTMATE
 *.tmproj
 tmtags
