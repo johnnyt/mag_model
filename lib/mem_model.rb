@@ -5,10 +5,20 @@ require 'active_attr'
 require 'securerandom'
 require 'forwardable'
 require 'set'
+require 'active_support/dependencies/autoload'
 
 module MemModel
+  def maglev?
+    !defined?(Maglev).nil?
+  end
+  module_function :maglev?
+
+  extend ActiveSupport::Autoload
+
+  autoload :Base
+  autoload :Guid
+  autoload :RootedBase
+  autoload :RootedStore
 end
 
-require 'mem_model/base'
-require 'mem_model/guid'
 require 'mem_model/version'
