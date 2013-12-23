@@ -3,7 +3,7 @@ require File.expand_path('../../helper', __FILE__)
 class TestBase < Minitest::Test
   class Account
     include MemModel::Base
-    attribute :balance
+    attr_accessor :balance
   end
 
   def setup

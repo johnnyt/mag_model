@@ -4,21 +4,27 @@ module MemModel
 
   module Base
     def self.included(base)
-      base.send :include, ActiveAttr::Model
+      base.send :include, ActiveAttr::BasicModel
       base.send :extend, Enumerable
       base.send :extend, ClassMethods
-      base.class_eval do
-        attribute :id
-      end
+      base.send :attr_accessor, :id
     end
 
     module ClassMethods
-      extend Forwardable
-      def_delegators :store, :each, :size, :entries
-      alias_method :all, :entries
-
       def store
         @store ||= Set.new
+      end
+
+      def each
+        store.each
+      end
+
+      def size
+        store.size
+      end
+
+      def all
+        store.to_a
       end
 
       def generate_id

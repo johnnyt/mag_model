@@ -3,7 +3,6 @@ $LOAD_PATH << lib_dir unless $LOAD_PATH.include? lib_dir
 
 require 'active_attr'
 require 'securerandom'
-require 'forwardable'
 require 'set'
 require 'active_support/dependencies/autoload'
 
