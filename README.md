@@ -1,8 +1,4 @@
-# MemModel
-
-[![Gem Version][GV img]][Gem Version]
-[![Build Status][BS img]][Build Status]
-[![Coverage Status][CS img]][Coverage Status]
+# MemModel [![Ver][Ver img]][Ver] [![Bld][Bld img]][Bld] [![Cov][Cov img]][Cov]
 
 MemModel persists Ruby objects using MagLev as a data storage engine. It is an
 ActiveModel compliant implementation so it works stand-alone or in Rails 3 as a
@@ -95,13 +91,13 @@ To see what has changed in recent versions, see the [CHANGELOG.md](CHANGELOG.md)
 <!--- ###################################################################### --->
 <!--- ### URLs --->
 
-[Gem Version]: https://rubygems.org/gems/mem_model
-[Build Status]: https://travis-ci.org/johnnyt/mem_model
-[Coverage Status]: https://coveralls.io/r/johnnyt/mem_model
+[Ver]: https://rubygems.org/gems/mem_model
+[Bld]: https://travis-ci.org/johnnyt/mem_model
+[Cov]: https://coveralls.io/r/johnnyt/mem_model
 
-[GV img]: https://badge.fury.io/rb/mem_model.png
-[BS img]: https://travis-ci.org/johnnyt/mem_model.png
-[CS img]: https://coveralls.io/repos/johnnyt/mem_model/badge.png?branch=master
+[Ver img]: https://badge.fury.io/rb/mem_model.png
+[Bld img]: https://travis-ci.org/johnnyt/mem_model.png
+[Cov img]: https://coveralls.io/repos/johnnyt/mem_model/badge.png?branch=master
 
 [hoe]: http://www.zenspider.com/projects/hoe.html
 
