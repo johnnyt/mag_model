@@ -1,3 +1,5 @@
+.coveralls.yml
+.gitignore
 .travis.yml
 CHANGELOG.md
 CONTRIBUTING.md
@@ -8,10 +10,14 @@ README.md
 Rakefile
 lib/mem_model.rb
 lib/mem_model/base.rb
+lib/mem_model/guid.rb
+lib/mem_model/rooted_base.rb
+lib/mem_model/rooted_store.rb
 lib/mem_model/version.rb
 mem_model.gemspec
 test/helper.rb
-test/mem_model/test_active_model_lint.rb
+test/mem_model/test_active_model.rb
 test/mem_model/test_base.rb
-test/mem_model/test_persistence.rb
+test/mem_model/test_guid.rb
+test/mem_model/test_rooted_store.rb
 test/test_version.rb
