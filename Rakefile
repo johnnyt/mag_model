@@ -29,6 +29,11 @@ task :changelog do
   puts "Prepended these new changes:\n\n#{changes}"
 end
 
+desc 'Console'
+task :console do
+  sh "irb -rubygems -r ./lib/mem_model"
+end
+
 if defined? Hoe
 
 [ :debug, :deps, :gemcutter, :newb, :publish, :signing ].each do |plugin|
@@ -55,9 +60,6 @@ Hoe.spec 'mem_model' do
   self.testlib      = :none # actually minitest. this helps the gem to be loaded
 
   license 'MIT'
-
-  dependency 'active_attr',   '>= 0.8.2'
-  dependency 'activesupport', '>= 3.2.15'
 
   dependency 'minitest',            '>= 5.0.0', :development
   dependency 'minitest-reporters',  '>= 1.0.0', :development

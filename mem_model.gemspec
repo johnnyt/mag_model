@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# stub: mem_model 0.2.0.20131223123844 ruby lib
+# stub: mem_model 0.2.0.20131224082528 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mem_model"
-  s.version = "0.2.0.20131223123844"
+  s.version = "0.2.0.20131224082528"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["JohnnyT"]
-  s.date = "2013-12-23"
+  s.date = "2013-12-24"
   s.description = "MemModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MemModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
   s.email = ["ubergeek3141@gmail.com"]
   s.extra_rdoc_files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md"]
@@ -25,23 +25,17 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<active_attr>, [">= 0.8.2"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.2.15"])
       s.add_development_dependency(%q<minitest>, [">= 5.0.0"])
       s.add_development_dependency(%q<minitest-reporters>, [">= 1.0.0"])
       s.add_development_dependency(%q<coveralls>, [">= 1.0.0"])
       s.add_development_dependency(%q<hoe>, ["~> 3.7"])
     else
-      s.add_dependency(%q<active_attr>, [">= 0.8.2"])
-      s.add_dependency(%q<activesupport>, [">= 3.2.15"])
       s.add_dependency(%q<minitest>, [">= 5.0.0"])
       s.add_dependency(%q<minitest-reporters>, [">= 1.0.0"])
       s.add_dependency(%q<coveralls>, [">= 1.0.0"])
       s.add_dependency(%q<hoe>, ["~> 3.7"])
     end
   else
-    s.add_dependency(%q<active_attr>, [">= 0.8.2"])
-    s.add_dependency(%q<activesupport>, [">= 3.2.15"])
     s.add_dependency(%q<minitest>, [">= 5.0.0"])
     s.add_dependency(%q<minitest-reporters>, [">= 1.0.0"])
     s.add_dependency(%q<coveralls>, [">= 1.0.0"])
