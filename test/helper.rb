@@ -1,9 +1,5 @@
 require 'rubygems'
 
-# Disable warning message
-require 'i18n'
-I18n.enforce_available_locales = false
-
 # Only run coverage in MRI
 unless defined? Maglev
   if ENV['CI']
@@ -16,6 +12,6 @@ unless defined? Maglev
 end
 
 require File.expand_path('lib/mem_model')
-require 'active_model/lint'
+require File.expand_path('../active_model_lint', __FILE__)
 gem 'minitest', '5.2.0'
 require 'minitest/autorun'
