@@ -1,22 +1,40 @@
 module MemModel
-  class UnknownRecord < ArgumentError; end
-  class InvalidRecord < StandardError; end
-
   module Base
     def self.included(base)
-      base.send :include, ActiveAttr::BasicModel
-      base.send :extend, Enumerable
       base.send :extend, ClassMethods
+      base.send :include, ActiveModelInstanceMethods
       base.send :attr_accessor, :id
     end
 
+    module ActiveModelInstanceMethods
+      def model_name; self.class.model_name; end
+      def valid?; true; end
+      def persisted?; true; end
+
+      def to_key; end
+      def to_param; end
+      def to_partial_path; 'something'; end
+
+      def errors; @errors ||= Errors.new(self); end
+    end
+
     module ClassMethods
-      def store
-        @store ||= Set.new
+      include Enumerable
+
+      def each(&block)
+        store.each(&block)
       end
 
-      def each
-        store.each
+      def model_name
+        @model_name ||= ModelName.new(self.name)
+      end
+
+      def store_class
+        MemModel.maglev? ? IdentitySet : Set
+      end
+
+      def store
+        @store ||= store_class.new
       end
 
       def size
@@ -25,6 +43,10 @@ module MemModel
 
       def all
         store.to_a
+      end
+
+      def last
+        all[-1]
       end
 
       def generate_id
@@ -46,22 +68,6 @@ module MemModel
         store.any?{ |record| record.id == id }
       end
 
-      def update(id, atts)
-        find(id).update_attributes(atts)
-      end
-
-      def destroy(id)
-        find(id).destroy
-      end
-
-      # Removes all records and executes
-      # destroy callbacks.
-      def destroy_all
-        all.each {|r| r.destroy }
-      end
-
-      # Removes all records without executing
-      # destroy callbacks.
       def delete_all
         store.clear
       end
@@ -74,8 +80,24 @@ module MemModel
         rec.save && rec
       end
 
-      def create!(*args)
-        create(*args) || raise(InvalidRecord)
+      def maglev?
+        MemModel.maglev?
+      end
+
+      def abort
+        # no-op
+        true
+      end
+
+      def commit
+        # no-op
+        true
+      end
+
+      alias_method :to_str, :to_s
+
+      def delete(record)
+        store.delete(record)
       end
     end
 
@@ -83,6 +105,23 @@ module MemModel
       @persisted = false
       self.id = self.class.generate_id
       load_attributes(attributes)
+    end
+
+    def maglev?
+      self.class.maglev?
+    end
+
+    def abort
+      self.class.abort
+    end
+
+    def commit
+      self.class.commit
+    end
+
+    def persistent(&block)
+      # no-op
+      block.call
     end
 
     def new?
@@ -98,19 +137,17 @@ module MemModel
       new? ? create : update
     end
 
-    def save!
-      save || raise(InvalidRecord)
-    end
-
     def create
       self.id ||= generate_id
-      self.class.store << self
-      @persisted = true
+      persistent do
+        self.class.store << self
+        @persisted = true
+      end
       self.id
     end
 
     def update
-      # no-op
+      commit
       true
     end
 
@@ -119,8 +156,8 @@ module MemModel
       save
     end
 
-    def destroy
-      self.class.records.delete(self.id)
+    def delete
+      self.class.delete(self)
       self
     end
 

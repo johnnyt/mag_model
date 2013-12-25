@@ -1,6 +1,6 @@
 require File.expand_path('../../helper', __FILE__)
 
-class TestRootedStore < Minitest::Test
+class TestRootedBase < Minitest::Test
   class Account
     include MemModel::RootedBase
   end
@@ -30,5 +30,15 @@ class TestRootedStore < Minitest::Test
     else
       assert_equal MemModel, Account.root_container
     end
+  end
+
+  def test_abort
+    # no-op in MRI
+    assert @account.abort
+  end
+
+  def test_commit
+    # no-op in MRI
+    assert @account.commit
   end
 end
