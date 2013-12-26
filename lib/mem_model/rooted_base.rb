@@ -2,10 +2,8 @@ module MemModel
   PERSISTENT_ROOT = {} if !MemModel.maglev?
 
   module RootedBase
-    def self.included(base)
-      base.send :include, Base
-      base.send :extend, ClassMethods
-    end
+    extend MemModel::Concern
+    include Base
 
     module ClassMethods
       def root_container
@@ -33,16 +31,6 @@ module MemModel
       def commit
         Maglev.commit_transaction if maglev?
         true
-      end
-
-      def clobber!
-        persistent do
-          root[:MemModel].delete(container_key)
-          begin
-            Object.remove_const name.to_sym
-          rescue NameError
-          end
-        end
       end
 
       def persistent(&block)

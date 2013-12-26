@@ -11,6 +11,6 @@ module MemModel
   module_function :maglev?
 end
 
-%w[ base errors guid model_name rooted_base version ].each do |file|
+%w[ concern base errors guid model_name rooted_base version ].each do |file|
   load File.expand_path("../mem_model/#{file}.rb", __FILE__)
 end

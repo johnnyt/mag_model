@@ -1,21 +1,9 @@
 module MemModel
   module Base
-    def self.included(base)
-      base.send :extend, ClassMethods
-      base.send :include, ActiveModelInstanceMethods
-      base.send :attr_accessor, :id
-    end
+    extend MemModel::Concern
 
-    module ActiveModelInstanceMethods
-      def model_name; self.class.model_name; end
-      def valid?; true; end
-      def persisted?; true; end
-
-      def to_key; end
-      def to_param; end
-      def to_partial_path; 'something'; end
-
-      def errors; @errors ||= Errors.new(self); end
+    included do
+      attr_accessor :id
     end
 
     module ClassMethods
@@ -106,6 +94,18 @@ module MemModel
       self.id = self.class.generate_id
       load_attributes(attributes)
     end
+
+
+    def model_name; self.class.model_name; end
+    def valid?; true; end
+    def persisted?; true; end
+
+    def to_key; end
+    def to_param; end
+    def to_partial_path; 'something'; end
+
+    def errors; @errors ||= Errors.new(self); end
+
 
     def maglev?
       self.class.maglev?

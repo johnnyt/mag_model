@@ -1,8 +1,6 @@
 module MemModel
   module Guid
-    def self.included(base)
-      base.send :extend, MemModel::Guid::ClassMethods
-    end
+    extend MemModel::Concern
 
     module ClassMethods
       def generate_id
