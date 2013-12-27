@@ -32,7 +32,7 @@ require 'mem_model'
 
 class Account
   include MemModel::Base
-  attribute :balance
+  attr_accessor :balance
   validates_presence_of :balance
 end
 
