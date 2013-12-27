@@ -3,6 +3,7 @@ module MemModel
     extend MemModel::Concern
 
     included do
+      include MemModel::Validations
       attr_accessor :id
     end
 
@@ -97,7 +98,6 @@ module MemModel
 
 
     def model_name; self.class.model_name; end
-    def valid?; true; end
     def persisted?; true; end
 
     def to_key; end
