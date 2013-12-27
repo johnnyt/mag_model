@@ -12,6 +12,6 @@ unless defined? Maglev
 end
 
 require File.expand_path('lib/mem_model')
-require File.expand_path('../active_model_lint', __FILE__)
+Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
 gem 'minitest', '5.2.0'
 require 'minitest/autorun'
