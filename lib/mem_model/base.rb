@@ -23,7 +23,7 @@ module MemModel
       end
 
       def store
-        @store ||= store_class.new
+        @@store ||= store_class.new
       end
 
       def size
