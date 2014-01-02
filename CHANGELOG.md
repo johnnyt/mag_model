@@ -1,3 +1,10 @@
+### 0.4.0 / 2014-01-02
+
+* 1 enhancement:
+
+  * Use class var (not class instance var) for store
+
+
 ### 0.3.0 / 2013-12-27
 
 * 1 enhancement

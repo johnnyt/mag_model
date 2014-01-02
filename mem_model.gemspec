@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
-# stub: mem_model 0.3.0.20131227093624 ruby lib
+# stub: mem_model 0.4.0.20140102120535 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mem_model"
-  s.version = "0.3.0.20131227093624"
+  s.version = "0.4.0.20140102120535"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["JohnnyT"]
-  s.date = "2013-12-27"
+  s.date = "2014-01-02"
   s.description = "MemModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MemModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
   s.email = ["ubergeek3141@gmail.com"]
   s.extra_rdoc_files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md"]
-  s.files = [".coveralls.yml", ".gitignore", ".travis.yml", "CHANGELOG.md", "CONTRIBUTING.md", "Gemfile.ci", "LICENSE.md", "Manifest.txt", "README.md", "Rakefile", "lib/mem_model.rb", "lib/mem_model/base.rb", "lib/mem_model/guid.rb", "lib/mem_model/rooted_base.rb", "lib/mem_model/rooted_store.rb", "lib/mem_model/version.rb", "mem_model.gemspec", "test/helper.rb", "test/mem_model/test_active_model.rb", "test/mem_model/test_base.rb", "test/mem_model/test_guid.rb", "test/mem_model/test_rooted_store.rb", "test/test_version.rb", "test/mem_model/test_rooted_base.rb", "test/mem_model/test_validations.rb", "test/mem_model/test_version.rb", ".gemtest"]
+  s.files = [".coveralls.yml", ".gitignore", ".travis.yml", "CHANGELOG.md", "CONTRIBUTING.md", "Gemfile.ci", "LICENSE.md", "Manifest.txt", "README.md", "Rakefile", "lib/mem_model.rb", "lib/mem_model/base.rb", "lib/mem_model/concern.rb", "lib/mem_model/errors.rb", "lib/mem_model/guid.rb", "lib/mem_model/model_name.rb", "lib/mem_model/rooted_base.rb", "lib/mem_model/validations.rb", "lib/mem_model/version.rb", "mem_model.gemspec", "test/helper.rb", "test/mem_model/test_active_model.rb", "test/mem_model/test_base.rb", "test/mem_model/test_guid.rb", "test/mem_model/test_rooted_base.rb", "test/mem_model/test_validations.rb", "test/mem_model/test_version.rb", "test/support/active_model_lint.rb", ".gemtest"]
   s.homepage = "https://github.com/johnnyt/mem_model"
   s.licenses = ["MIT"]
   s.rdoc_options = ["--main", "README.md"]
