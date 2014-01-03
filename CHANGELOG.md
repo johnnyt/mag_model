@@ -1,3 +1,10 @@
+### 0.5.0 / 2014-01-02
+
+* 1 enhancement:
+
+  * Use native Maglev #committed? if available
+
+
 ### 0.4.0 / 2014-01-02
 
 * 1 enhancement:

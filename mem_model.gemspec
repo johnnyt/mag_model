@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# stub: mem_model 0.4.0.20140102120535 ruby lib
+# stub: mem_model 0.5.0.20140102213025 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mem_model"
-  s.version = "0.4.0.20140102120535"
+  s.version = "0.5.0.20140102213025"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["JohnnyT"]
-  s.date = "2014-01-02"
+  s.date = "2014-01-03"
   s.description = "MemModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MemModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
   s.email = ["ubergeek3141@gmail.com"]
   s.extra_rdoc_files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md"]
