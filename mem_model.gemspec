@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: mem_model 0.6.0.20140102221058 ruby lib
+# stub: mem_model 0.7.0.20140103165733 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mem_model"
-  s.version = "0.6.0.20140102221058"
+  s.version = "0.7.0.20140103165733"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["JohnnyT"]

@@ -1,3 +1,11 @@
+### 0.7.0 / 2014-01-03
+
+* 2 enhancements:
+
+  * Having GUID be default
+  * Update persistence methods
+
+
 ### 0.6.0 / 2014-01-02
 
 * 1 unknown:
