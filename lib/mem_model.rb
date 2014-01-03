@@ -1,7 +1,6 @@
 lib_dir = File.dirname(__FILE__)
 $LOAD_PATH << lib_dir unless $LOAD_PATH.include? lib_dir
 
-require 'securerandom'
 require 'set'
 
 module MemModel

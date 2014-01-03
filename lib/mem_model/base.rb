@@ -38,10 +38,6 @@ module MemModel
         all[-1]
       end
 
-      def generate_id
-        object_id
-      end
-
       # Find or nil
       def find(id)
         store.detect{ |r| r.id == id }
@@ -92,10 +88,13 @@ module MemModel
 
     def initialize(attributes = {})
       @persisted = false unless maglev?
-      self.id = self.class.generate_id
       load_attributes(attributes)
+      self.id ||= self.generate_id
     end
 
+    def generate_id
+      object_id
+    end
 
     def model_name; self.class.model_name; end
 
