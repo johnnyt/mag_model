@@ -24,6 +24,7 @@ class TestRootedBase < Minitest::Test
       assert_raises TransactionError, 'The test Account class is transient' do
         @account.save
       end
+      @account.abort
     end
 
   else
