@@ -7,7 +7,25 @@ module MemModel
   def maglev?
     !defined?(Maglev).nil?
   end
-  module_function :maglev?
+
+  def commit
+    maglev? ? Maglev.commit_transaction : true
+  end
+
+  def abort
+    maglev? ? Maglev.abort_transaction : true
+  end
+
+  def persistent(&block)
+    if maglev?
+      Maglev.persistent{ block.call }
+      #Maglev.commit_transaction
+    else
+      block.call
+    end
+  end
+
+  module_function :maglev?, :commit, :abort, :persistent
 end
 
 %w[ concern base errors guid model_name rooted_base validations version ].each do |file|

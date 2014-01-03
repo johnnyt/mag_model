@@ -3,7 +3,10 @@ module MemModel
 
   module RootedBase
     extend MemModel::Concern
-    include Base
+
+    included do
+      include MemModel::Base
+    end
 
     module ClassMethods
       def root_container

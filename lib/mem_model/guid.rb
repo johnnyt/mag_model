@@ -2,9 +2,21 @@ module MemModel
   module Guid
     extend MemModel::Concern
 
+    def generate_id
+      self.class.generate_id
+    end
+
     module ClassMethods
       def generate_id
         [guid_prefix, '-', new_uuid].join.upcase
+      end
+
+      def guid_prefix
+        name[0...3]
+      end
+
+      def find_all_matching(substring)
+        store.select{ |r| r.id.include?(substring.to_s.upcase) }
       end
 
       def random_bytes(n=16)
@@ -33,14 +45,6 @@ module MemModel
         ary[2] = (ary[2] & 0x0fff) | 0x4000
         ary[3] = (ary[3] & 0x3fff) | 0x8000
         "%08x-%04x-%04x-%04x-%04x%08x" % ary
-      end
-
-      def guid_prefix
-        name[0...3]
-      end
-
-      def find_all_matching(substring)
-        store.select{ |r| r.id.include?(substring.to_s.upcase) }
       end
     end
   end

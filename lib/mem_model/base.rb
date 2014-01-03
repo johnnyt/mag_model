@@ -4,6 +4,7 @@ module MemModel
 
     included do
       include MemModel::Validations
+      include MemModel::Guid
       attr_accessor :id
     end
 
@@ -70,19 +71,22 @@ module MemModel
       end
 
       def abort
-        # no-op
-        true
+        MemModel.abort
       end
 
       def commit
-        # no-op
-        true
+        MemModel.commit
       end
 
       alias_method :to_str, :to_s
 
       def delete(record)
         store.delete(record)
+      end
+
+      def persist
+        self.maglev_persistable
+        commit
       end
     end
 
@@ -124,8 +128,7 @@ module MemModel
     end
 
     def persistent(&block)
-      # no-op
-      block.call
+      MemModel.persistent(&block)
     end
 
     def new?
