@@ -1,3 +1,10 @@
+### 0.6.0 / 2014-01-02
+
+* 1 unknown:
+
+  * Use internal random_bytes - SecureRandom is blowing up once committed
+
+
 ### 0.5.0 / 2014-01-02
 
 * 1 enhancement:
