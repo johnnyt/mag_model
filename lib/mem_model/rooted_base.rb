@@ -25,28 +25,6 @@ module MemModel
       def root
         @root ||= root_container::PERSISTENT_ROOT
       end
-
-      def abort
-        Maglev.abort_transaction if maglev?
-        true
-      end
-
-      def commit
-        Maglev.commit_transaction if maglev?
-        true
-      end
-
-      def persistent(&block)
-        abort
-        maglev? ?
-          Maglev.persistent { block.call } :
-          block.call
-        commit
-      end
-    end
-
-    def persistent(&block)
-      self.class.persistent(&block)
     end
   end
 end

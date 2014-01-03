@@ -18,23 +18,10 @@ class TestRootedBase < Minitest::Test
     refute Account.exists? 314159
   end
 
-  if MemModel.maglev?
-
-    def test_maglev_exists
-      assert_raises TransactionError, 'The test Account class is transient' do
-        @account.save
-      end
-      @account.abort
-    end
-
-  else
-
-    def test_mri_exists
-      refute Account.exists? @account.id
-      @account.save
-      assert Account.exists? @account.id
-    end
-
+  def test_exists
+    refute Account.exists? @account.id
+    @account.save
+    assert Account.exists? @account.id
   end
 
   def test_root_container

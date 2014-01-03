@@ -19,7 +19,7 @@ module MemModel
   def persistent(&block)
     if maglev?
       Maglev.persistent{ block.call }
-      #Maglev.commit_transaction
+      commit
     else
       block.call
     end

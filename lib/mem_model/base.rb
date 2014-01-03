@@ -84,9 +84,14 @@ module MemModel
         store.delete(record)
       end
 
-      def persist
-        self.maglev_persistable
-        commit
+      if !MemModel.maglev?
+        def committed?; false; end
+      end
+
+      def persistent(&block)
+        committed? ?
+          MemModel.persistent(&block) :
+          block.call
       end
     end
 
@@ -102,18 +107,31 @@ module MemModel
 
     def model_name; self.class.model_name; end
 
-    unless MemModel.maglev?
+    if !MemModel.maglev?
       def committed?; @persisted == true; end
     end
-    alias_method :persisted?, :committed?
-    alias_method :exists?, :committed?
+
+    def class_committed?
+      self.class.committed?
+    end
+
+    def persisted?
+      class_committed? ?
+        committed? :
+        @persisted == true
+    end
+    alias_method :exists?, :persisted?
+
+    def new?
+      !persisted?
+    end
+    alias_method :new_record?, :new?
 
     def to_key; end
     def to_param; end
     def to_partial_path; 'something'; end
 
     def errors; @errors ||= Errors.new(self); end
-
 
     def maglev?
       self.class.maglev?
@@ -128,13 +146,8 @@ module MemModel
     end
 
     def persistent(&block)
-      MemModel.persistent(&block)
+      self.class.persistent(&block)
     end
-
-    def new?
-      !persisted?
-    end
-    alias_method :new_record?, :new?
 
     def save
       new? ? create : update
@@ -144,7 +157,7 @@ module MemModel
       self.id ||= generate_id
       persistent do
         self.class.store << self
-        @persisted = true unless maglev?
+        @persisted = true unless class_committed?
       end
       self.id
     end
