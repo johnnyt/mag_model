@@ -19,11 +19,11 @@ module MemModel
       end
 
       def store_class
-        MemModel.maglev? ? IdentitySet : Set
+        maglev? ? IdentitySet : Set
       end
 
       def store
-        @@store ||= store_class.new
+        @store ||= store_class.new
       end
 
       def size
@@ -91,14 +91,19 @@ module MemModel
     end
 
     def initialize(attributes = {})
-      @persisted = false
+      @persisted = false unless maglev?
       self.id = self.class.generate_id
       load_attributes(attributes)
     end
 
 
     def model_name; self.class.model_name; end
-    def persisted?; true; end
+
+    unless MemModel.maglev?
+      def committed?; @persisted == true; end
+    end
+    alias_method :persisted?, :committed?
+    alias_method :exists?, :committed?
 
     def to_key; end
     def to_param; end
@@ -125,13 +130,9 @@ module MemModel
     end
 
     def new?
-      !exists?
+      !persisted?
     end
     alias_method :new_record?, :new?
-
-    def exists?
-      @persisted == true
-    end
 
     def save
       new? ? create : update
@@ -141,7 +142,7 @@ module MemModel
       self.id ||= generate_id
       persistent do
         self.class.store << self
-        @persisted = true
+        @persisted = true unless maglev?
       end
       self.id
     end
