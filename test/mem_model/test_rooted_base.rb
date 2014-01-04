@@ -2,7 +2,7 @@ require File.expand_path('../../helper', __FILE__)
 
 class TestRootedBase < Minitest::Test
   class Account
-    include MemModel::RootedBase
+    include MemModel::Base
   end
 
   def setup

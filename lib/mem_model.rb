@@ -28,6 +28,6 @@ module MemModel
   module_function :maglev?, :commit, :abort, :persistent
 end
 
-%w[ concern base errors guid model_name rooted_base validations version ].each do |file|
+%w[ concern base errors guid model_name validations version ].each do |file|
   load File.expand_path("../mem_model/#{file}.rb", __FILE__)
 end

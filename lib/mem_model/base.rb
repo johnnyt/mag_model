@@ -1,4 +1,6 @@
 module MemModel
+  PERSISTENT_ROOT = {} if !MemModel.maglev?
+
   module Base
     extend MemModel::Concern
 
@@ -11,6 +13,24 @@ module MemModel
     module ClassMethods
       include Enumerable
 
+      def root_container
+        MemModel.maglev? ? Maglev : MemModel
+      end
+
+      def container_key
+        name.to_sym
+      end
+
+      def store
+        root[:MemModel] ||= {}
+        root[:MemModel][container_key] ||= store_class.new
+      end
+
+      def root
+        @root ||= root_container::PERSISTENT_ROOT
+      end
+
+
       def each(&block)
         store.each(&block)
       end
@@ -21,10 +41,6 @@ module MemModel
 
       def store_class
         maglev? ? IdentitySet : Set
-      end
-
-      def store
-        @store ||= store_class.new
       end
 
       def size
