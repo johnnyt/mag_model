@@ -14,7 +14,6 @@ lib/mem_model/concern.rb
 lib/mem_model/errors.rb
 lib/mem_model/guid.rb
 lib/mem_model/model_name.rb
-lib/mem_model/rooted_base.rb
 lib/mem_model/validations.rb
 lib/mem_model/version.rb
 mem_model.gemspec

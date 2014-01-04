@@ -1,3 +1,10 @@
+### 0.8.0 / 2014-01-03
+
+* 1 enhancement:
+
+  * Merge RootedBase into Base
+
+
 ### 0.7.0 / 2014-01-03
 
 * 2 enhancements:
