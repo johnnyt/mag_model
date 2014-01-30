@@ -8,6 +8,7 @@ module MemModel
       include MemModel::Validations
       include MemModel::Guid
       attr_accessor :id
+      attr_reader :created_at, :updated_at
       alias :guid :id
       alias :guid= :id=
     end
@@ -171,13 +172,15 @@ module MemModel
 
     def create
       persistent do
-        self.class.store << self
+        @created_at = @updated_at = Time.now
         @persisted = true if !class_committed?
+        self.class.store << self
       end
       self.id
     end
 
     def update
+      @updated_at = Time.now
       commit
       true
     end
@@ -194,6 +197,14 @@ module MemModel
 
     def to_model
       return self
+    end
+
+    def to_hash
+      {
+        id: id,
+        created_at: created_at,
+        updated_at: updated_at
+      }
     end
 
     private
