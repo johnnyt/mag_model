@@ -8,6 +8,8 @@ module MemModel
       include MemModel::Validations
       include MemModel::Guid
       attr_accessor :id
+      alias :guid :id
+      alias :guid= :id=
     end
 
     module ClassMethods
@@ -97,7 +99,7 @@ module MemModel
       alias_method :to_str, :to_s
 
       def delete(record)
-        store.delete(record)
+        persistent{ store.delete(record) }
       end
 
       if !MemModel.maglev?
@@ -105,20 +107,18 @@ module MemModel
       end
 
       def persistent(&block)
-        committed? ?
+        result = committed? ?
           MemModel.persistent(&block) :
           block.call
+        commit
+        result
       end
     end
 
     def initialize(attributes = {})
       @persisted = false unless maglev?
+      @id = self.class.generate_id
       load_attributes(attributes)
-      self.id ||= self.generate_id
-    end
-
-    def generate_id
-      object_id
     end
 
     def model_name; self.class.model_name; end
@@ -170,10 +170,9 @@ module MemModel
     end
 
     def create
-      self.id ||= generate_id
       persistent do
         self.class.store << self
-        @persisted = true unless class_committed?
+        @persisted = true if !class_committed?
       end
       self.id
     end
@@ -199,11 +198,11 @@ module MemModel
 
     private
 
-    def load_attributes(attributes)
-      return unless attributes
-      attributes.each do |(name, value)|
-        self.send("#{name}=".to_sym, value)
+      def load_attributes(attributes)
+        return unless attributes
+        attributes.each do |(name, value)|
+          self.send("#{name}=".to_sym, value)
+        end
       end
-    end
   end
 end
