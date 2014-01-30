@@ -1,42 +1,11 @@
 # -*- ruby -*-
 
 require './lib/mem_model/version'
-begin
-  require 'hoe'
-rescue LoadError
-end
-
-desc 'Setup your local dev environment'
-task :setup do
-  spec = Gem::Specification::load('mem_model.gemspec')
-  sh "gem install hoe-git #{spec.dependencies.map{|d| d.name}.join(' ')}"
-end
-
-desc 'Changelog'
-task :changelog do
-  spec = Gem::Specification::load('mem_model.gemspec')
-
-  changes_io = StringIO.new
-  $stdout = changes_io
-  ENV['VERSION'] = MemModel::VERSION
-  Rake::Task['git:changelog'].invoke
-  $stdout = STDOUT
-  changes = changes_io.string.gsub('===', '###')
-
-  current = File.read('CHANGELOG.md')
-  File.write('CHANGELOG.md', [changes, current].join)
-
-  puts "Prepended these new changes:\n\n#{changes}"
-end
-
-desc 'Console'
-task :console do
-  sh "irb -rubygems -r ./lib/mem_model"
-end
+require 'hoe' rescue LoadError
 
 if defined? Hoe
 
-[ :debug, :deps, :gemcutter, :newb, :publish, :signing ].each do |plugin|
+[ :debug, :gemcutter, :newb, :publish, :signing ].each do |plugin|
   Hoe.plugins.delete plugin
 end
 
@@ -61,11 +30,40 @@ Hoe.spec 'mem_model' do
 
   license 'MIT'
 
-  dependency 'minitest',            '>= 5.0.0', :development
-  dependency 'minitest-reporters',  '>= 1.0.0', :development
-  dependency 'coveralls',           '>= 1.0.0', :development
+  dependency 'minitest',            '~> 5.0', :development
+  dependency 'minitest-reporters',  '~> 1.0', :development
+  dependency 'coveralls',           '~> 1.0', :development
+end
+
+desc 'Changelog'
+task :changelog do
+  spec = Gem::Specification::load('mem_model.gemspec')
+
+  changes_io = StringIO.new
+  $stdout = changes_io
+  ENV['VERSION'] = MemModel::VERSION
+  Rake::Task['git:changelog'].invoke
+  $stdout = STDOUT
+  changes = changes_io.string.gsub('===', '###')
+
+  current = File.read('CHANGELOG.md')
+  File.write('CHANGELOG.md', [changes, current].join)
+
+  puts "Prepended these new changes:\n\n#{changes}"
+end
+
+desc 'Console'
+task :console do
+  sh "irb -rubygems -r ./lib/mem_model"
 end
 
 end # has_hoe
+
+desc 'Setup your local dev environment'
+task :setup do
+  spec = Gem::Specification::load('mem_model.gemspec')
+  sh "gem install #{spec.dependencies.map{|d| d.name}.join(' ')}"
+  sh "rake install_plugins"
+end
 
 # vim: syntax=ruby
