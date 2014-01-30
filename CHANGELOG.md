@@ -1,3 +1,13 @@
+### 0.9.0 / 2014-01-29
+
+* 4 enhancements:
+
+  * Add created_at, updated_at
+  * Add to_hash
+  * Always initialize @id
+  * persistent now commits
+
+
 ### 0.8.0 / 2014-01-03
 
 * 1 enhancement:
