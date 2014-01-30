@@ -2,10 +2,6 @@ module MemModel
   module Guid
     extend MemModel::Concern
 
-    def generate_id
-      self.class.generate_id
-    end
-
     module ClassMethods
       def generate_id
         [guid_prefix, '-', new_uuid].join.upcase
