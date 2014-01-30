@@ -13,5 +13,5 @@ end
 
 require File.expand_path('lib/mem_model')
 Dir[File.expand_path('../support/*.rb', __FILE__)].each { |file| require file }
-gem 'minitest', '5.2.0'
+require 'minitest'
 require 'minitest/autorun'
