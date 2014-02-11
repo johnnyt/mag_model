@@ -35,7 +35,22 @@ Hoe.spec 'mem_model' do
   dependency 'coveralls',           '~> 1.0', :development
 end
 
-desc 'Changelog'
+desc '- Changelog, manifest, new spec'
+task :prepare => %w[ changelog git:manifest gem:spec ] do
+  puts "Now run\n\nrake gem\n"
+end
+
+
+desc '- Create commit'
+task :commit do
+  files = 'CHANGELOG.md lib/mem_model/version.rb mem_model.gemspec'
+  puts "== Adding #{files}"
+  `git add #{files}`
+  puts '== Creating commit'
+  `git commit -m ':checkered_flag: Release #{MemModel::VERSION}'`
+end
+
+desc 'Prepend new changes to CHANGELOG'
 task :changelog do
   spec = Gem::Specification::load('mem_model.gemspec')
 
