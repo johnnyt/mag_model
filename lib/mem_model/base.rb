@@ -171,18 +171,24 @@ module MemModel
     end
 
     def create
-      persistent do
-        @created_at = @updated_at = Time.now
-        @persisted = true if !class_committed?
-        self.class.store << self
-      end
+      persistent{ create_without_commit }
       self.id
     end
 
+    # This can be used when bulk loading
+    def create_without_commit
+      @created_at = @updated_at = Time.now
+      @persisted = true if !class_committed?
+      self.class.store << self
+    end
+
     def update
-      @updated_at = Time.now
-      commit
+      persistent{ update_without_commit }
       true
+    end
+
+    def update_without_commit
+      @updated_at = Time.now
     end
 
     def update_attributes(attributes)
