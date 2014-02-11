@@ -1,3 +1,10 @@
+### 0.10.0 / 2014-02-11
+
+* 1 enhancement:
+
+  * Create without commit
+
+
 ### 0.9.0 / 2014-01-29
 
 * 4 enhancements:

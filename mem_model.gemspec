@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: mem_model 0.9.0.20140129213522 ruby lib
+# stub: mem_model 0.10.0.20140211081008 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "mem_model"
-  s.version = "0.9.0.20140129213522"
+  s.version = "0.10.0.20140211081008"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["JohnnyT"]
-  s.date = "2014-01-30"
+  s.date = "2014-02-11"
   s.description = "MemModel persists Ruby objects using MagLev as a data storage engine. It's an ActiveModel implementation so it works stand-alone or in Rails 3 as a drop-in replacement for ActiveRecord or DataMapper.  If MemModel is used in non-MagLev platforms, objects will be persisted to in-memory sets."
   s.email = ["ubergeek3141@gmail.com"]
   s.extra_rdoc_files = ["CHANGELOG.md", "CONTRIBUTING.md", "LICENSE.md", "Manifest.txt", "README.md"]
@@ -25,20 +25,20 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<minitest>, [">= 5.0.0"])
-      s.add_development_dependency(%q<minitest-reporters>, [">= 1.0.0"])
-      s.add_development_dependency(%q<coveralls>, [">= 1.0.0"])
+      s.add_development_dependency(%q<minitest>, ["~> 5.0"])
+      s.add_development_dependency(%q<minitest-reporters>, ["~> 1.0"])
+      s.add_development_dependency(%q<coveralls>, ["~> 1.0"])
       s.add_development_dependency(%q<hoe>, ["~> 3.8"])
     else
-      s.add_dependency(%q<minitest>, [">= 5.0.0"])
-      s.add_dependency(%q<minitest-reporters>, [">= 1.0.0"])
-      s.add_dependency(%q<coveralls>, [">= 1.0.0"])
+      s.add_dependency(%q<minitest>, ["~> 5.0"])
+      s.add_dependency(%q<minitest-reporters>, ["~> 1.0"])
+      s.add_dependency(%q<coveralls>, ["~> 1.0"])
       s.add_dependency(%q<hoe>, ["~> 3.8"])
     end
   else
-    s.add_dependency(%q<minitest>, [">= 5.0.0"])
-    s.add_dependency(%q<minitest-reporters>, [">= 1.0.0"])
-    s.add_dependency(%q<coveralls>, [">= 1.0.0"])
+    s.add_dependency(%q<minitest>, ["~> 5.0"])
+    s.add_dependency(%q<minitest-reporters>, ["~> 1.0"])
+    s.add_dependency(%q<coveralls>, ["~> 1.0"])
     s.add_dependency(%q<hoe>, ["~> 3.8"])
   end
 end
