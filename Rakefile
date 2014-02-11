@@ -41,13 +41,17 @@ task :prepare => %w[ changelog git:manifest gem:spec ] do
 end
 
 
-desc '- Create commit'
+desc '- Create commit, push to origin, tag'
 task :commit do
   files = 'CHANGELOG.md lib/mem_model/version.rb mem_model.gemspec'
   puts "== Adding #{files}"
   `git add #{files}`
   puts '== Creating commit'
   `git commit -m ':checkered_flag: Release #{MemModel::VERSION}'`
+  puts '== Pushing master to origin'
+  `git push origin master`
+  puts '== Running rake git:tag'
+  Rake::Task['git:tag'].invoke
 end
 
 desc 'Prepend new changes to CHANGELOG'
